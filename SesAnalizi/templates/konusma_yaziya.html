@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konuşmayı Yazıya ve Duygu Analizine Dönüştür</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .mikrofon-buton {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #007bff;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .mikrofon-buton.kayit {
+            background: #dc3545;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .yazi-kutusu, .analiz-sonucu {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            min-height: 150px;
+            font-size: 18px;
+            text-align: left;
+            line-height: 1.5;
+            background: #f9f9f9;
+        }
+        .kelime-sayisi, .duygu-analizi {
+            margin: 10px auto;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .duygu-analizi {
+        margin: 20px auto;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        max-width: 400px;
+        background-color: #f8f9fa;
+    }
+    
+    .duygu-analizi h3 {
+        color: #333;
+        margin-bottom: 15px;
+    }
+    
+    .sonuclar {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    </style>
+</head>
+<body>
+    <h1>Konuşmayı Yazıya ve Duygu Analizine Dönüştür</h1>
+    <button class="mikrofon-buton" id="mikrofonButonu">🎤</button>
+    <div class="kelime-sayisi" id="kelimeSayisi">Kelime sayısı: 0</div>
+    <div class="yazi-kutusu" id="yaziAlani"></div>
+   
+    <div class="duygu-analizi" id="duyguSonucu">
+        <h3>Duygu Analizi Sonuçları</h3>
+        <div class="sonuclar">
+            Analiz bekleniyor...
+        </div>
+    </div>
+    
+  
+    
+    <script src="../static/js/konusma.js"></script>
+</body>
+</html>

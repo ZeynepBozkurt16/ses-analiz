@@ -1,0 +1,65 @@
+body {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+nav {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.control-panel {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+button {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+button:disabled {
+    background: #ccc;
+}
+.analysis-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.analysis-box {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+.analysis-box img {
+    width: 100%;
+    max-width: 500px;
+}
+#fileList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background: #fff;
+    border-radius: 4px;
+}
+#timer {
+    margin-left: 10px;
+    font-weight: bold;
+    color: #dc3545;
+}

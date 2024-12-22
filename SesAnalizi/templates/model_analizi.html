@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Kayıtlı Sesler</h3>
+            {% for ses in sesler %}
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h5>{{ ses }}</h5>
+                    <audio controls>
+                        <source src="{{ url_for('static', filename='recordings/' + ses) }}" type="audio/wav">
+                    </audio>
+                    <a href="/model/{{ ses }}" class="btn btn-primary mt-2">Analiz Et</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
+            {% if sonuclar %}
+            <h3>Model Sonuçları - {{ secili_ses }}</h3>
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="metricsChart"></canvas>
+                    <p class="mt-3">Doğruluk Oranı: {{ sonuclar.accuracy }}</p>
+                    <p>F-ölçümü: {{ sonuclar.fmeasure }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+{% if sonuclar %}
+    var ctx = document.getElementById('metricsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Doğruluk Oranı', 'F-ölçümü'],
+            datasets: [{
+                label: 'Model Metrikleri',
+                data: [{{ sonuclar.accuracy }}, {{ sonuclar.fmeasure }}],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 1
+                }
+            }
+        }
+    });
+{% endif %}
+</script>
+{% endblock %}
